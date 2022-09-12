@@ -29,23 +29,17 @@ def graficar(columna):
     """
     Función que gráfica un histograma
     """
-#A continuación se pide al usuario definir el número de barras o niveles del histograma    
-niveles = int(input('Dime cuantos niveles de la campana (min 1/ max 12): '))
-
 #mediante iteraciones con el ciclo "for" se repite el proceso de distribuir las canicas en los\
 #niveles respectivos definidos por el usuario
-carriles = [0]*(niveles)
-for i in range(factor(niveles)):
-  guardado = -1
-
-  for i in range(niveles):
-    guardado += randint(0, 1)
-  carriles[guardado] += 1
-
+niveles = [0]*(12)
+for i in range(factor(12)):
+  iteraciones = -1
+  for i in range(12):
+    iteraciones += randint(0,1)
+  niveles[iteraciones] += 1  
+  print(niveles)
 #finalmente se gráfican los valores 
-print(f' se usaron {factor(niveles)}, canicas en total')
-print(carriles)
-
-graficar(carriles)
+print(f' se usaron {factor(12)}, canicas en total')
+graficar(niveles)
 
     
