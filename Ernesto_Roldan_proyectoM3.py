@@ -9,37 +9,47 @@ import numpy as np
 import matplotlib.pyplot as plt
 from random import randint
 
-# se definen dos funciones: la primera para obtener el factor que multiplicado por cada canica \
-#distribuya 3000 canicas en una gráfica de manera proporcional dando como resultado una forma de campana
-#la segunda función pretende generar la gráfica de histograma a traves de 3 variables: valores del eje X\
-  #número de barras y color
-def factor(x):
-    numero =(x)**1*250
-    return (numero)
-    """
-    Función que calcula el factor que origina la distribución de la campana de Galton 
-    """
-def graficar(columna):
-    X = np.arange(len(columna))
-    plt.suptitle('Tablero de Galton')
-    plt.bar(X, columna, color = 'red')
+# se definen las funciones: las dos primeras generan la distribución de las canicas en una iteración 
+# de 12 niveles dando como resultado contenedores con 3000 canicas
+# la última función pretende generar la gráfica de histograma a traves de 3 variables: valores del 
+# eje X número de barras y color
+
+
+def random(n):
+    x= np.random.randint(0,2,(cont,n))
+    return(x)
+"""Función que calcula la distribución de las canicas asignadas para cada nivel"""
+
+def pos(niveles):
+    posicion=np.cumsum(niveles,axis=0)
+    return(posicion)
+"""Función que calcula la posición de las canicas """
+
+def graficar(pasos):
+    plt.hist(pasos[-1],color='red')
+    plt.suptitle('Simulación tablero de Galton')
     plt.xlabel('Distribución de canicas')
     plt.ylabel('Cantidad de canicas')
     plt.show()
-    """
-    Función que gráfica un histograma
-    """
-#mediante iteraciones con el ciclo "for" se repite el proceso de distribuir las canicas en los\
-#niveles respectivos definidos por el usuario
-niveles = [0]*(12)
-for i in range(factor(12)):
-  iteraciones = -1
-  for i in range(12):
-    iteraciones += randint(0,1)
-  niveles[iteraciones] += 1  
-  print(niveles)
-#finalmente se gráfican los valores 
-print(f' se usaron {factor(12)}, canicas en total')
-graficar(niveles)
+"""Función que grafica las canicas contenidas en los 12 niveles"""
 
+n=3000
+niveles =12
+cont =1
+
+for i in range(niveles):
+    dir = int(input('Asigna la dirección de las canicas: izquierda>--(2), derecha>--(1): '))
     
+    if dir == 2:
+        niveles = random(n) * 2
+        pos(niveles) 
+        cont +=1       
+
+    elif dir == 1:
+        niveles = random(n) * 1 
+        pos(niveles)
+        cont +=1
+
+    print(pos(niveles))
+graficar(pos(niveles))
+        
