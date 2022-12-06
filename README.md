@@ -1,4 +1,4 @@
-# Proyecto del módulo 3
+# Gráfica de datos aleatorios
 ##
 ###
 
