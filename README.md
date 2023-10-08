@@ -1,6 +1,6 @@
 # Gráfica de datos aleatorios
 ##
-###Bootcamp Fundamentos de Python
+###Bootcamp  Python
 
 Este proyecto pretende demostrar como una muestra grande se comporta como una normal (la media de los datos tiende a 0) a través del comportamiento de la maquina de Galton que funcionaa con el mismo principio que una Distribución Normal en lugar de variar aleatoriamente.
 
